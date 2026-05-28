@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Home Depot - Address Verification Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="header"> 
+       <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/The_Home_Depot.svg" alt="The Home Depot Logo"> 
+   </div>
+
+   <div class="checkout-container">
+       <div class="shipping-section">
+           <h2 class="text-2xl font-bold mb-4">Delivery Address</h2>
+           <input type="text" placeholder="First & Last Name" class="w-full p-2 border rounded mb-2">
+           <input type="text" id="address" placeholder="Street Address" class="w-full p-2 border rounded mb-2">
+           <input type="text" id="aptUnit" placeholder="Apartment, Suite, Unit, Building (Optional)" class="w-full p-2 border rounded mb-2">
+           <input type="text" id="city" placeholder="City" class="w-full p-2 border rounded mb-2">
+           <input type="text" id="state" placeholder="State" class="w-full p-2 border rounded mb-2">
+           <input type="text" id="zip" placeholder="ZIP Code" class="w-full p-2 border rounded mb-4">
+           <button class="btn-primary" onclick="validateAddress()">Verify Address</button>
+       </div>
+   </div>
+
+   <div id="modal" class="modal">
+       <div class="modal-content">
+           <h3 class="font-bold text-lg mb-2 text-gray-900">Verify Your Address Layout</h3>
+           <div id="modal-body"></div>
+       </div>
+   </div>
+
+   <div id="sub-premise-modal" class="modal">
+        <div class="modal-content">
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Missing Unit/Suite Number</h3>
+            <div id="sub-premise-modal-body">
+                <p class="text-sm text-gray-600">The Google Address Database suggests this location contains multiple units. Please add a unit or apartment code to avoid delivery delays.</p>
+                <button class="btn-primary mt-2" onclick="closeSubPremiseModal()">Edit Address</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete" async defer></script>
+</body>
+</html>
